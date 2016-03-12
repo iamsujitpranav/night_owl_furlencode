@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category_id: 1
+  store_name: MyString
+  open_time: 2016-03-12 15:45:00
+  close_time: 2016-03-12 15:45:00
+  store_owner: MyString
+  phone_no: 1
+  description: MyText
+
+two:
+  category_id: 1
+  store_name: MyString
+  open_time: 2016-03-12 15:45:00
+  close_time: 2016-03-12 15:45:00
+  store_owner: MyString
+  phone_no: 1
+  description: MyText

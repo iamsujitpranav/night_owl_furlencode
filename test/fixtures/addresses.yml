@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  address_line1: MyText
+  address_line2: MyText
+  landmark: MyString
+  store_id: 1
+
+two:
+  address_line1: MyText
+  address_line2: MyText
+  landmark: MyString
+  store_id: 1
