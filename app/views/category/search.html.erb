@@ -1,8 +1,0 @@
-<%@stores.flatten.uniq.each do |store|%>
-  <div class="list-group">
-    <a href="#" class="list-group-item">
-      <%=content_tag(:h4,store.store_name,:class=>"list-group-item-heading")%>
-      <%=content_tag(:p,store.description,:class=>"list-group-item-text")%>
-    </a>
-  </div>
-<%end%>

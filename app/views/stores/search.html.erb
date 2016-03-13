@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <h2>Search Here</h2>
+    <div id="custom-search-input">
+      <%= form_tag search_stores_path, method: "get"   do %>
+        <div class="input-group col-md-12">
+          <%= text_field_tag(:q,nil,class: "search-query form-control",placeholder: 'Enter search term')%>
+          <span class="input-group-btn">
+            <%=submit_tag "Search",class: "btn btn-info"%>
+          </span>
+        </div>
+      <%end%>
+    </div>
+    <br>
+    <%if params[:q].present?%>
+      <div class="list-group">
+        <%if @stores.present?%>   
+          <%@stores.uniq.each do |store|%>
+            <%=link_to(store,class: "list-group-item") do%>
+              <%=content_tag(:h4,store.store_name,:class=>"list-group-item-heading")%>
+              <%=content_tag(:p,store.description,:class=>"list-group-item-text")%>
+              <%=content_tag(:p,"Open Time: " + store.open_time.strftime("%R"),class: "home-time icon-time")%> |
+              <%=content_tag(:p,"Close Time: " + store.close_time.strftime("%R"),class: "home-time icon-time")%>
+            <%end%>
+          <%end%>
+          <br><br>
+          <div style='width: 800px;'>
+            <div id="map" style='width: 800px; height: 400px;'></div>
+          </div>
+        <%else%>   
+          <%=content_tag(:p,"Ohh Dear!! Sorry we couldn't able to find what you needed.",:class=>"list-group-item-text")%>
+        <%end%>   
+      </div>
+    <%end%>
+  </div>
+</div>
+<script>
+  handler = Gmaps.build('Google');
+  handler.buildMap({
+      provider: {
+        disableDefaultUI: true
+        // pass in other Google Maps API options here
+      },
+      internal: {
+        id: 'map'
+      }
+    },
+  function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json%>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  }
+);
+</script>

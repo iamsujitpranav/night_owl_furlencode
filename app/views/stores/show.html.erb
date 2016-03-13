@@ -1,0 +1,8 @@
+<%=content_tag(:div,class: "panel panel-default") do%> 
+  <%=content_tag(:div,class: "panel-heading") do%>   
+    <%=content_tag(:h3,@store.store_name,:class=>"panel-title")%>
+  <%end%>  
+  <%=content_tag(:div,@store.description,:class=>"panel-body") if @store.description.present?%>
+  <%=content_tag(:p,"Open Time: " + @store.open_time.strftime("%R"),class: "time icon-time")%> |
+  <%=content_tag(:p,"Close Time: " + @store.close_time.strftime("%R"),class: "time icon-time")%>
+<%end%>
